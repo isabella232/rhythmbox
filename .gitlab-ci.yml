@@ -12,17 +12,17 @@ before_script:
                        libsoup2.4-dev libgudev-1.0-dev libmtp-dev libnotify-dev
                        libbrasero-media3-dev
                        libsecret-1-dev libpeas-dev yelp-tools x11proto-core-dev
-                       liblircclient-dev python3-dev python-gi-dev
+                       liblircclient-dev python3-dev python-gi-dev python3-pip
                        libdmapsharing-3.0-dev libjson-glib-dev libgrilo-0.3-dev
-                       libxml2-dev libtdb-dev
+                       libxml2-dev libtdb-dev ninja-build
+  - pip3 install meson
 
 test:
   stage: test
   script:
     - mkdir build
     - cd build
-    - NOCONFIGURE=1 ../autogen.sh
-    - ../configure
-    - make
-    - make check
-    - make install
+    - meson ..
+    - ninja
+    - meson test
+    - ninja install
