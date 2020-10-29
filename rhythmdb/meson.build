@@ -35,7 +35,7 @@ endif
 c_args = [
   '-DGNOMELOCALEDIR="' + datadir + '/locale"',
   '-DG_LOG_DOMAIN="RhythmDB"',
-  '-DSHARE_DIR="' + datadir + '"',
+  '-DSHARE_DIR="' + pkgdatadir + '"',
   '-DDATADIR="' + datadir + '"'
 ]
 

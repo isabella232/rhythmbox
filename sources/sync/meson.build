@@ -9,7 +9,7 @@ sourcesync_c_args = [
   '-DGNOMELOCALEDIR="' + datadir + '/locale"',
   '-DG_LOG_DOMAIN="Rhythmbox"',
   '-DPIXMAP_DIR="' + datadir + '/pixmaps"',
-  '-DSHARE_DIR="' + datadir + '"',
+  '-DSHARE_DIR="' + pkgdatadir + '"',
   '-DDATADIR="' + datadir + '"',
 ]
 

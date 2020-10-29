@@ -243,6 +243,7 @@ use_no_strict_aliasing = cc.has_argument('-fno-strict-aliasing')
 
 datadir = get_option('prefix') / get_option('datadir')
 libdir = get_option('prefix') / get_option('libdir')
+pkgdatadir = datadir / 'rhythmbox'
 
 #################
 # Plugin support

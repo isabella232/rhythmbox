@@ -40,7 +40,7 @@ lib_sources = files(
 lib_c_args = [
   '-DG_LOG_DOMAIN="Rhythmbox"',
   '-DGNOMELOCALEDIR="' + datadir + '/locale"',
-  '-DSHARE_DIR="' + datadir + '"',
+  '-DSHARE_DIR="' + pkgdatadir + '"',
   '-DDATADIR="' + datadir + '"'
 ]
 

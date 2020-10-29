@@ -8,7 +8,7 @@ mpris_c_args = [
   '-DG_LOG_DOMAIN="Rhythmbox"',
   '-DPIXMAP_DIR="@0@"'.format(datadir / 'pixmaps'),
   '-DSHARE_DIR="@0@"'.format(datadir),
-  '-DDATADIR="@0@"'.format(datadir),
+  '-DDATADIR="@0@"'.format(pkgdatadir),
 ]
 
 shared_module('mpris',
