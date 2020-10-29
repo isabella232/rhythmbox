@@ -18,3 +18,10 @@ replaygain_plugin_descriptor = custom_target('replaygain-plugin-descriptor',
 
 install_data('replaygain-prefs.ui',
   install_dir: replaygain_plugin_data_dir)
+
+if get_option('uninstalled_build')
+  # This is a hack to collect all Python source files for this plugin
+  # in the build tree, so uninstalled Rhythmbox can load it.
+  sh = find_program('sh')
+  run_command(sh, '-c', 'cp ${MESON_SOURCE_ROOT}/${MESON_SUBDIR}/*.py ${MESON_SOURCE_ROOT}/${MESON_SUBDIR}/*.ui ${MESON_SOURCE_ROOT}/${MESON_SUBDIR}/*.plugin ${MESON_BUILD_ROOT}/${MESON_SUBDIR}/', check: true)
+endif

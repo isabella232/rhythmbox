@@ -29,3 +29,10 @@ install_data('webremote.html',
 
 install_data('webremote-config.ui',
   install_dir: webremote_plugin_data_dir)
+
+if get_option('uninstalled_build')
+  # This is a hack to collect all Python source files for this plugin
+  # in the build tree, so uninstalled Rhythmbox can load it.
+  sh = find_program('sh')
+  run_command(sh, '-c', 'cp -a ${MESON_SOURCE_ROOT}/${MESON_SUBDIR}/* ${MESON_BUILD_ROOT}/${MESON_SUBDIR}/', check: true)
+endif

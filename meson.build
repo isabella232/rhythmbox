@@ -198,9 +198,9 @@ cdata.set('PACKAGE', '"rhythmbox"')
 cdata.set('VERSION', '@0@'.format(meson.project_version()))
 
 cdata.set('USE_UNINSTALLED_DIRS', get_option('uninstalled_build'))
-cdata.set('SHARE_UNINSTALLED_DIR', '"@0@"'.format(meson.source_root() + '/data'))
-cdata.set('SHARE_UNINSTALLED_BUILDDIR', '"@0@"'.format(meson.build_root() + '/data'))
-cdata.set('METADATA_UNINSTALLED_DIR', '"@0@"'.format(meson.build_root() + '/metadata'))
+cdata.set('SHARE_UNINSTALLED_DIR', '"@0@"'.format(meson.current_source_dir() + '/data'))
+cdata.set('SHARE_UNINSTALLED_BUILDDIR', '"@0@"'.format(meson.current_build_dir() + '/data'))
+cdata.set('METADATA_UNINSTALLED_DIR', '"@0@"'.format(meson.current_build_dir() + '/metadata'))
 
 # Needed so that we can build static libraries and later link them into
 # shared libraries.

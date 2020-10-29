@@ -95,7 +95,7 @@ librhythmbox_core = shared_library('rhythmbox_core',
   include_directories: rhythmbox_core_include_directories,
   dependencies: [rhythmbox_core_dependencies,  mediaplayerid_dep, rhythmdb_dep,
     rbbackends_dep, rbpodcast_dep, rbwidgets_dep, sources_dep],
-  install: 'true',
+  install: true,
   link_args: ['-export-dynamic'],
   link_whole: [librb, rbwidgets_lib, sources_lib],
   version: '@0@.@1@.@2@'.format(RHYTHMBOX_CORE_CURRENT, RHYTHMBOX_CORE_REVISION, RHYTHMBOX_CORE_AGE)
