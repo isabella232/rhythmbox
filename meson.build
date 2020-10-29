@@ -158,7 +158,7 @@ endif
 
 cdata.set10('WITH_RHYTHMDB_TREE', 1)
 
-cdata.set10('RHYTHMDB_ENABLE_SANITY_CHECK', get_option('rhythmdb-debug'))
+cdata.set10('RHYTHMDB_ENABLE_SANITY_CHECK', get_option('rhythmdb_debug'))
 
 have_gnu_fwrite_unlocked = cc.has_function('fwrite_unlocked')
 
@@ -197,7 +197,7 @@ cdata.set('GETTEXT_PACKAGE', '"rhythmbox"')
 cdata.set('PACKAGE', '"rhythmbox"')
 cdata.set('VERSION', '@0@'.format(meson.project_version()))
 
-cdata.set('USE_UNINSTALLED_DIRS', get_option('uninstalled-build'))
+cdata.set('USE_UNINSTALLED_DIRS', get_option('uninstalled_build'))
 cdata.set('SHARE_UNINSTALLED_DIR', '"@0@"'.format(meson.source_root() + '/data'))
 cdata.set('SHARE_UNINSTALLED_BUILDDIR', '"@0@"'.format(meson.build_root() + '/data'))
 cdata.set('METADATA_UNINSTALLED_DIR', '"@0@"'.format(meson.build_root() + '/metadata'))
@@ -207,9 +207,9 @@ cdata.set('METADATA_UNINSTALLED_DIR', '"@0@"'.format(meson.build_root() + '/meta
 add_global_arguments('-fPIC', language: 'c')
 
 set_more_warnings = false
-if get_option('more-warnings') == 'yes'
+if get_option('more_warnings') == 'yes'
   set_more_warnings = true
-elif get_option('more-warnings') == 'auto'
+elif get_option('more_warnings') == 'auto'
   if run_command('[', '-d', '.git', ']').returncode() == 0
     set_more_warnings = true
   endif
@@ -259,14 +259,14 @@ cdata.set('PLUGINDATADIR',  plugindatadir)
 cdata.set('SAMPLEPLUGINDIR', libdir / 'rhythmbox' / 'sample-plugins')
 
 enable_python = false
-if get_option('python-plugins') != 'no'
+if get_option('plugins_python') != 'no'
   python = find_program('python3')
-  if not python.found() and get_option('python-plugins') == 'yes'
+  if not python.found() and get_option('plugins_python') == 'yes'
     error('Python support explicitly requested, but no suitable Python interpreter could be found')
   endif
 
   pygobject = dependency('pygobject-3.0', version: '>= 3.0.0')
-  if not pygobject.found() and get_option('python-plugins') == 'yes'
+  if not pygobject.found() and get_option('plugins_python') == 'yes'
     error('Python support explicitly requested, but pygobject-3.0 could not be found')
   endif
 
@@ -275,10 +275,10 @@ if get_option('python-plugins') != 'no'
 endif
 
 enable_vala = false
-if get_option('vala-plugins') != 'no'
+if get_option('plugins_vala') != 'no'
   vala_found = add_languages('vala', required: false)
 
-  if not vala_found and get_option('vala-plugins') == 'yes'
+  if not vala_found and get_option('plugins_vala') == 'yes'
     error('Vala plugin support explicitly requested, but not found')
   endif
 
@@ -289,16 +289,16 @@ endif
 # Plugins
 
 enable_fm_radio = false
-if get_option('fm-radio') != 'no'
+if get_option('fm_radio') != 'no'
   if cc.has_header('linux/videodev2.h')
     enable_fm_radio = true
-  elif get_option('fm-radio') == 'yes'
+  elif get_option('fm_radio') == 'yes'
     error('FM radio plugin explicitly requested, but cannot be built')
   endif
 endif
 
 enable_browser_plugin = false
-if get_option('browser-plugin')
+if get_option('browser_plugin')
   # This is configurable with configure.ac by setting MOZILLA_PLUGINDIR in the
   # environment. Here it's hardcoded, mainly because Meson doesn't yet support
   # reading environment vars: https://github.com/mesonbuild/meson/issues/9
@@ -350,7 +350,7 @@ if get_option('database') == 'tree'
 else
   error('Unknown database!')
 endif
-if get_option('rhythmdb-debug') == '0'
+if get_option('rhythmdb_debug') == '0'
   message('** RhythmDB sanity checking enabled (may be slow!)')
 endif
 
