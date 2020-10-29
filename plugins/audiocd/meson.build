@@ -25,9 +25,8 @@ audiocd_plugin_descriptor = custom_target('audiocd-plugin-descriptor',
   install: true,
   install_dir: audiocd_plugin_dir)
 
-test('test-cd',
-  executable('test-cd',
-    'test-cd.c',
-    'rb-audiocd-info.c',
-    'rb-musicbrainz-lookup.c',
-    dependencies: [rhythmbox_core_dep, totem_plparser]))
+executable('test-cd',
+  'test-cd.c',
+  'rb-audiocd-info.c',
+  'rb-musicbrainz-lookup.c',
+  dependencies: [rhythmbox_core_dep, totem_plparser])
