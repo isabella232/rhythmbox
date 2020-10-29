@@ -206,39 +206,6 @@ cdata.set('METADATA_UNINSTALLED_DIR', '"@0@"'.format(meson.current_build_dir() +
 # shared libraries.
 add_global_arguments('-fPIC', language: 'c')
 
-set_more_warnings = false
-if get_option('more_warnings') == 'yes'
-  set_more_warnings = true
-elif get_option('more_warnings') == 'auto'
-  if run_command('[', '-d', '.git', ']').returncode() == 0
-    set_more_warnings = true
-  endif
-endif
-
-if set_more_warnings == true and cc.get_id() == 'gcc'
-  warning_flags = [
-    '-Wcomment', '-Wformat', '-Wnonnull', '-Wimplicit-int', '-Wimplicit',
-    '-Wmain', '-Wmissing-braces', '-Wparentheses', '-Wsequence-point',
-    '-Wreturn-type', '-Wswitch', '-Wtrigraphs', '-Wunused-function',
-    '-Wunused-label', '-Wunused-value', '-Wchar-subscripts',
-    '-Wmissing-declarations', '-Wmissing-prototypes', '-Wnested-externs',
-    '-Wpointer-arith', '-Wcast-align', '-Wformat-security', '-Wall',
-    '-Wno-deprecated-declarations']
-
-  # in configure.ac this option is only added if '-O0' is not present in the CFLAGS
-  # I'm not sure how to do it in Meson and not sure if it matters; the configure.ac
-  # stuff dates from 2005 in commit 8a76a0a72abad7ae24b895910d93791b90dfe005.
-  warning_flags += ['-Wuninitialized']
-
-  foreach option : warning_flags
-    add_global_arguments(option, language: 'c')
-    # In configure.ac we would check if each compiler argument was actually
-    # supported by the compiler. That's quite slow and here we just assume
-    # they all are. If this causes problems, `if cc.has_argument(option)` is
-    # the way to implement such a check here.
-  endforeach
-endif
-
 use_no_strict_aliasing = cc.has_argument('-fno-strict-aliasing')
 
 datadir = get_option('prefix') / get_option('datadir')

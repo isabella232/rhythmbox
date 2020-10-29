@@ -31,8 +31,6 @@ option('plugins_vala', type: 'combo', choices: ['yes', 'no', 'auto'], value: 'au
 
 option('database', type: 'combo', choices: ['tree'], value: 'tree',
        description: 'Select the database to use (default tree)')
-option('more_warnings', type: 'combo', choices: ['yes', 'no', 'auto'], value: 'auto',
-       description: 'Maximum compiler warnings')
 option('rhythmdb_debug', type: 'combo', choices: ['0', '1', '2'], value: '0',
        description: 'Level of RhythmDB sanity checking')
 option('uninstalled_build', type: 'boolean', value: false,
