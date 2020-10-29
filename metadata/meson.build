@@ -39,7 +39,7 @@ if use_no_strict_aliasing
   metadata_c_args += ['-fno-strict-aliasing']
 endif
 
-metadata_deps = [tdb]
+metadata_deps = [tdb, gstreamer, gstreamer_pbutils, gstreamer_tag]
 
 # client library
 
@@ -59,11 +59,11 @@ rbmetadata_dep = declare_dependency(
 # service
 
 rbmetadatasvc_lib = static_library('rbmetadatasvc', metadata_service_sources,
-  dependencies: [librb_dep, rbmetadata_dep, gstreamer, gstreamer_pbutils, gtk])
+  dependencies: [librb_dep, rbmetadata_dep, gtk])
 
 executable('rhythmbox-metadata', metadata_dbus_service_sources,
   link_with: rbmetadatasvc_lib,
-  dependencies: [librb_dep, rbmetadata_dep, gstreamer, gstreamer_pbutils, gtk],
+  dependencies: [librb_dep, rbmetadata_dep, gtk],
   install: true,
   install_dir: get_option('libexecdir'),
   install_rpath: rpath

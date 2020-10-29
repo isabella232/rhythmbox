@@ -15,7 +15,7 @@ gstreamer_backend_c_args = [
 ]
 
 gstreamer_backend_dependencies = [gstreamer_base, gstreamer_controller,
-  gstreamer_plugins_base]
+  gstreamer_plugins_base, gstreamer_tag]
 
 rbbackendsgstreamer_lib = static_library('rbbackendsgstreamer',
   gstreamer_backend_sources,
